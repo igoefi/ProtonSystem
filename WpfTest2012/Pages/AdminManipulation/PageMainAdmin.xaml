@@ -1,0 +1,42 @@
+﻿<Page x:Class="WpfTest2012.Pages.PageMainAdmin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfTest2012.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageMainAdmin">
+
+    <Grid>
+        <StackPanel                 
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+            
+            <Button Click="BtnDBInfo"
+                Width="150"
+                Height="50"
+                BorderThickness="1"
+                Content="Info"/>
+            
+            <Button Click="BtnUpdateUserInfo"
+                BorderThickness="1"
+                Width="150"
+                Height="50"
+                Content="Update Information"/>
+            
+            <Button
+                Click="BtnCreateUser_Click"
+                BorderThickness="1"
+                Width="150"
+                Height="50"
+                Content="Create user"/>
+            <Button
+                Click="BtnFAQ_Click"
+                BorderThickness="1"
+                Width="150"
+                Height="50"
+                Content="FAQ"/>
+        </StackPanel>
+    </Grid>
+</Page>

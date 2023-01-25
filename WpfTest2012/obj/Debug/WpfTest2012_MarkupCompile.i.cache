@@ -1,0 +1,20 @@
+﻿WpfTest2012
+
+
+winexe
+C#
+.cs
+D:\Рабочий стол\ProtonSystem\WpfTest2012\obj\Debug\
+WpfTest2012
+none
+false
+DEBUG;TRACE
+D:\Рабочий стол\ProtonSystem\WpfTest2012\App.xaml
+91101345153
+2-1223955081
+29-355556651
+211348439250
+MainWindow.xaml;Pages\AdminManipulation\UpdateUserInformationPage.xaml;Pages\HelperPages\FindUserPage.xaml;Pages\AdminManipulation\PageCreateUser.xaml;Pages\InfoPages\PageAboutProgram.xaml;Pages\InfoPages\PAgeDBInfo.xaml;Pages\InfoPages\PageFAQ.xaml;Pages\MainPages\PageLogin.xaml;Pages\AdminManipulation\PageMainAdmin.xaml;
+
+True
+

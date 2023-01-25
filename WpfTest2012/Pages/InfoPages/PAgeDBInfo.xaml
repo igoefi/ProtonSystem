@@ -1,0 +1,71 @@
+﻿<Page x:Class="WpfTest2012.Pages.PAgeDBInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfTest2012.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PAgeDBInfo">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="83*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Background="Red"/>
+
+        <Button Click="BtnPrint_Click"
+                HorizontalAlignment="Right"
+                Width="100"
+                Content="Print"/>
+        
+        <Button Click="BtnToExcel_Click"
+                HorizontalAlignment="Left"
+                Width="100"
+                Content="To Excel"/>
+
+        <DataGrid
+            IsReadOnly="True"
+            Name="GridUserList"
+            AutoGenerateColumns="False" Grid.RowSpan="1" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn 
+                    Header="ID"  
+                    Width="*"
+                    Binding="{Binding Id}"
+                    />
+                <DataGridTextColumn 
+                    Header="ФИО пользователя"     
+                    Width="5*"
+                    Binding="{Binding FullName}"
+                    FontFamily="Segoe UI Semibold"
+                    />
+                
+                <DataGridTextColumn 
+                    Header="Роль"     
+                    Width="3*"
+                    Binding="{Binding Role.Name}"
+                    />
+
+                <DataGridTextColumn 
+                    Header="Логин"     
+                    Width="2*"
+                    Binding="{Binding Login}"
+                    />
+                <DataGridTextColumn 
+                    Header="Пароль"     
+                    Width="2*"
+                    Binding="{Binding Password}"
+                    />
+
+                <DataGridTextColumn 
+                    Header="Последнее изменение"     
+                    Width="3*"
+                    Binding="{Binding LastUpdateInfoTime}"
+                    />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

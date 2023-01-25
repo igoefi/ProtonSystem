@@ -1,0 +1,42 @@
+﻿<Page x:Class="WpfTest2012.Pages.InfoPages.PageFAQ"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfTest2012.Pages.InfoPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageFAQ">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="119*"/>
+            <ColumnDefinition Width="281*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="131*"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Вопрос">
+            <ComboBox Name="CombBoxQuestion" MinWidth="150"
+                      SelectionChanged="CombBoxQuestionsSelectionChanged"/>
+        </GroupBox>
+
+        <TextBlock Grid.Column="1"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   FontSize="25"
+                   >
+            <Run Name="RnNameQuestion"/>
+        </TextBlock>
+
+        <TextBlock Grid.Column="1" Grid.Row="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="10"
+                   >
+            <Run Name="RnAnswer"/>
+        </TextBlock>
+    </Grid>
+</Page>
