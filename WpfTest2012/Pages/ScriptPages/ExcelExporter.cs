@@ -5,84 +5,23 @@ using System.Data.OleDb;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using WpfTest2012.Models;
-using static System.Net.WebRequestMethods;
 
 namespace WpfTest2012.Pages.ScriptPages
 {
     internal class ExcelExporter
     {
-        public Microsoft.Office.Interop.Excel.Application APP = null;
-        public Microsoft.Office.Interop.Excel.Workbook WB = null;
-        public Microsoft.Office.Interop.Excel.Worksheet WS = null;
-        public Microsoft.Office.Interop.Excel.Range Range = null;
-
-        public MyExcel()
-        {
-            this.APP = new Microsoft.Office.Interop.Excel.Application();
-            this.Open("C:\\MyExcel.xlsx", "Sheet1");
-            this.CreateHeader();
-            this.InsertData();
-            this.Close();
-        }
-
-        private void Open(string Location, int workSheet)
-        {
-            this.WB = this.APP.Workbooks.Open(Location);
-            this.WS = (Microsoft.Office.Interop.Excel.Worksheet)WB.Sheets[workSheet];
-            return this.WS;
-        }
-        private void CreateHeader()
-        {
-            int ind = 1;
-            foreach (object ob in this.dgvFields.Columns.Select(cs => cs.Header).ToList())
-            {
-                this.WS.Cells[1, ind] = ob.ToStrihng();
-                ind++;
-            }
-        }
-        private void InsertData()
-        {
-            ind = 2;
-            foreach (Field field in dgvFields.ItemsSource)
-            {
-                DataRow DR = DRV.Row;
-                for (int ind1 = 1; ind1 <= dgvFields.Columns.Count; ind1++)
-                {
-                    WS.Cells[ind][ind1] = DR[ind1 - 1];
-                }
-                ind++;
-            }
-        }
-        private void Close()
-        {
-            if (this.APP.ActiveWorkbook != null)
-                this.APP.ActiveWorkbook.Save();
-            if (this.APP != null)
-            {
-                if (this.WB != null)
-                {
-                    if (this.WS != null)
-                        Marshal.ReleaseComObject(this.WS);
-                    this.WB.Close(false, Type.Missing, Type.Missing);
-                    Marshal.ReleaseComObject(this.WB);
-                }
-                this.APP.Quit();
-                Marshal.ReleaseComObject(this.APP);
-            }
-        }
-
-        public static void ToExcelButton_OnClick(DataGrid UsersDataGrid)
+        public static void ToExcel(DataGrid UsersDataGrid)
         {
             IEnumerable<User> d = UsersDataGrid.ItemsSource.Cast<User>();
             DataTable data = ToDataTable(d.ToList());
-            ToExcelFile(data, "test.xlsx");
+            ToExcelFile(data, Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)
+            + "/ExcelUserData.xlsx");
         }
 
-        public static DataTable ToDataTable<T>(List<T> items)
+        private static DataTable ToDataTable<T>(List<T> items)
         {
             DataTable dataTable = new DataTable(typeof(T).Name);
 
@@ -111,7 +50,7 @@ namespace WpfTest2012.Pages.ScriptPages
             return dataTable;
         }
 
-        public static void ToExcelFile(DataTable dataTable, string filePath, bool overwriteFile = true)
+        private static void ToExcelFile(DataTable dataTable, string filePath, bool overwriteFile = true)
         {
             if (File.Exists(filePath) && overwriteFile)
                 File.Delete(filePath);

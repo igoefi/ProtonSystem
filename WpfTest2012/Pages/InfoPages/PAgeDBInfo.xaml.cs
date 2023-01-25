@@ -32,7 +32,7 @@ namespace WpfTest2012.Pages
             DataPrint.Print(GridUserList);
 
         private void BtnToExcel_Click(object sender, RoutedEventArgs e)=>
-            ExcelExporter.ToExcelButton_OnClick(GridUserList);
+            ExcelExporter.ToExcel(GridUserList);
             
     }
 }
